@@ -541,9 +541,9 @@ function initTest() {
             matchElement.style.marginBottom = '5px'; // 缩小每个匹配分析之间的空行
 
             matchElement.innerHTML = `
-            <h4>${index + 1}. ${person.name} (相似度: ${(similarity * 100).toFixed(2)}%， ${percentagesHtml})</h4>
-            <p style="font-size: 0.9em; margin: 5px 0;"><strong>性格特质:</strong> ${person.traits.join('， ')}</p>
-            <p style="font-size: 0.9em; margin: 5px 0;"><strong>典型事例:</strong> ${person.examples.join('，')}</p>
+            <h4>${index + 1}. ${person.name} (相似度: ${(similarity * 100).toFixed(2)}%, ${percentagesHtml})</h4>
+            <p style="font-size: 0.9em; margin: 5px 0;"><strong>性格特质:</strong> ${person.traits.join(', ')}</p>
+            <p style="font-size: 0.9em; margin: 5px 0;"><strong>典型事例:</strong> ${person.examples.join(', ')}</p>
         `;
 
             matchResultsContainer.innerHTML += matchElement.outerHTML; // 更新内容
