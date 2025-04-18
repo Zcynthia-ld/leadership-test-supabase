@@ -521,7 +521,7 @@ function initTest() {
         // 创建新容器（添加唯一标识类名）
         const matchResultsContainer = document.createElement('div');
         matchResultsContainer.className = 'match-results-container'; // 添加专属类名
-        matchResultsContainer.innerHTML = '<h3>领导力类型最为匹配的人物：</h3>';
+        matchResultsContainer.innerHTML = '<h3>领导力类型最为匹配的人物 </h3>';
 
         
         topMatches.forEach(({ person, similarity }, index) => {
