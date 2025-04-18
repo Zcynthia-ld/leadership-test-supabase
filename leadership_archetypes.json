@@ -2241,38 +2241,6 @@
       ]
     },
     {
-      "name": "猪八戒",
-      "types": [
-        {
-          "type": "water",
-          "weight": 0.5
-        },
-        {
-          "type": "earth",
-          "weight": 0.3
-        },
-        {
-          "type": "fire",
-          "weight": 0.2
-        }
-      ],
-      "traits": [
-        "乐观随和",
-        "重情重义"
-      ],
-      "examples": [
-        "高老庄娶亲",
-        "天蓬元帅"
-      ],
-      "percentages": [
-        0,
-        0,
-        0.5,
-        0.2,
-        0.3
-      ]
-    },
-    {
       "name": "贾宝玉",
       "types": [
         {

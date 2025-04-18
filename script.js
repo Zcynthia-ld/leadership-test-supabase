@@ -503,21 +503,27 @@ function initTest() {
         testSection.style.display = 'none';
         resultSection.style.display = 'block';
         
+
+
+        // 清除旧匹配结果（新增部分）
+        const oldMatches = document.querySelectorAll('.match-results-container');
+        oldMatches.forEach(element => element.remove());
+
         // 计算各元素得分
         const scores = calculateScores();
         const percentages = calculatePercentage(scores);
 
-        //**** 计算余弦相似度 
+        // 计算余弦相似度
         const userVector = vectorizePercentages(percentages, TYPE_ORDER);
         const database = await loadData('leadership_archetypes.json');
         const topMatches = findTopMatches(userVector, database);
-        console.log("Top 5 Matched Leaders:");
 
-        //**** 显示匹配结果
+        // 创建新容器（添加唯一标识类名）
         const matchResultsContainer = document.createElement('div');
-        matchResultsContainer.className = 'communication-tips';
+        matchResultsContainer.className = 'match-results-container'; // 添加专属类名
         matchResultsContainer.innerHTML = '<h3>领导力类型最为匹配的人物：</h3>';
 
+        
         topMatches.forEach(({ person, similarity }, index) => {
             const matchElement = document.createElement('div');
             matchElement.className = 'communication-tips'; // 使用与沟通建议相同的样式
@@ -535,12 +541,12 @@ function initTest() {
             matchElement.style.marginBottom = '5px'; // 缩小每个匹配分析之间的空行
 
             matchElement.innerHTML = `
-            <h4>${index + 1}. ${person.name} (相似度: ${(similarity * 100).toFixed(2)}%, ${percentagesHtml})</h4>
-            <p style="font-size: 0.9em; margin: 5px 0;"><strong>性格特质:</strong> ${person.traits.join(', ')}</p>
-            <p style="font-size: 0.9em; margin: 5px 0;"><strong>典型事例:</strong> ${person.examples.join(', ')}</p>
+            <h4>${index + 1}. ${person.name} (相似度: ${(similarity * 100).toFixed(2)}%， ${percentagesHtml})</h4>
+            <p style="font-size: 0.9em; margin: 5px 0;"><strong>性格特质:</strong> ${person.traits.join('， ')}</p>
+            <p style="font-size: 0.9em; margin: 5px 0;"><strong>典型事例:</strong> ${person.examples.join('，')}</p>
         `;
 
-            matchResultsContainer.appendChild(matchElement);
+            matchResultsContainer.innerHTML += matchElement.outerHTML; // 更新内容
         });
 
         // ****将匹配结果添加到结果部分
